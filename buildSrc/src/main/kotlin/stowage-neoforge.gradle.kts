@@ -1,11 +1,12 @@
 import semele.quinn.stowage.plugin.Versions
+import semele.quinn.stowage.plugin.includeCodeFrom
 import semele.quinn.stowage.plugin.neoForge
 
 plugins {
     id("stowage-generic")
 }
 
-evaluationDependsOn(project.path.replace("b-neoforge", "a-common"))
+includeCodeFrom("common")
 
 repositories {
     maven {

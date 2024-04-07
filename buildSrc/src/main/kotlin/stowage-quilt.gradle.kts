@@ -1,10 +1,12 @@
 import semele.quinn.stowage.plugin.Versions
+import semele.quinn.stowage.plugin.includeCodeFrom
 
 plugins {
     id("stowage-generic")
 }
 
-evaluationDependsOn(project.path.replace("d-quilt", "a-common"))
+includeCodeFrom("common")
+includeCodeFrom("thread")
 
 repositories {
     maven {

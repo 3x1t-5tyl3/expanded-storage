@@ -1,11 +1,12 @@
 import org.gradle.kotlin.dsl.dependencies
 import semele.quinn.stowage.plugin.Versions
+import semele.quinn.stowage.plugin.includeCodeFrom
 
 plugins {
     id("stowage-generic")
 }
 
-evaluationDependsOn(project.path.replace("c-thread", "a-common"))
+includeCodeFrom("common")
 
 dependencies {
     modLocalRuntime(modCompileOnly("net.fabricmc:fabric-loader:${Versions.FABRIC_LOADER}")!!)
