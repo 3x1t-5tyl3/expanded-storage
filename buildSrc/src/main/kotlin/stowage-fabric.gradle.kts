@@ -1,12 +1,12 @@
 import semele.quinn.stowage.plugin.Versions
-import semele.quinn.stowage.plugin.includeCodeFrom
+import semele.quinn.stowage.plugin.includeFromCommon
 
 plugins {
     id("stowage-generic")
 }
 
-includeCodeFrom("common")
-includeCodeFrom("thread")
+includeFromCommon("common")
+includeFromCommon("thread")
 
 dependencies {
     modImplementation("net.fabricmc:fabric-loader:${Versions.FABRIC_LOADER}")

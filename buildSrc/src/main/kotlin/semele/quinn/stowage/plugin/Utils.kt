@@ -10,6 +10,7 @@ import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.project
 import org.gradle.kotlin.dsl.withType
 import org.gradle.language.jvm.tasks.ProcessResources
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -30,7 +31,7 @@ private val SourceSetContainer.main: NamedDomainObjectProvider<SourceSet> get() 
 
 private val SourceSet.kotlin: SourceDirectorySet get() = extensions.getByName("kotlin") as SourceDirectorySet
 
-fun Project.includeCodeFrom(otherPartialName: String) {
+fun Project.includeFromCommon(otherPartialName: String) {
     val path = parent!!.childProjects.asSequence().first { it.key.contains(otherPartialName) }.value.path
 
     evaluationDependsOn(path)
@@ -53,5 +54,17 @@ fun Project.includeCodeFrom(otherPartialName: String) {
         from(project(path).sourceSets.main.map { it.resources }) {
             exclude("fabric.mod.json")
         }
+    }
+}
+
+fun Project.includeFromModule(otherPartialName: String) {
+    val target = rootProject.childProjects.asSequence().first { it.key.contains(otherPartialName) }.value.childProjects.asSequence().first { it.key == name }.value
+    evaluationDependsOn(target.path)
+
+    println("Module path: ${target.path}")
+
+    dependencies {
+//        compileOnly(project(path = target.path, configuration = "namedElements"))
+//        include(target)
     }
 }
