@@ -49,7 +49,9 @@ tasks {
     }
 
     named<ProcessResources>("processResources") {
-        inputs.properties(mutableMapOf("version" to Versions.STOWAGE))
+        inputs.properties(mutableMapOf(
+            "mod_version" to Versions.STOWAGE
+        ))
 
         // todo: 1.20.5, remove META-INF/mods.toml
         filesMatching(listOf("fabric.mod.json", "quilt.mod.json", "META-INF/mods.toml", "META-INF/neoforge.mods.toml")) {

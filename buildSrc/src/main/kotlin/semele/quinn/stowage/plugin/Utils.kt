@@ -3,6 +3,7 @@ package semele.quinn.stowage.plugin
 import org.gradle.api.NamedDomainObjectProvider
 import org.gradle.api.Project
 import org.gradle.api.Task
+import org.gradle.api.file.SourceDirectorySet
 import org.gradle.api.specs.Spec
 import org.gradle.api.tasks.SourceSet
 import org.gradle.api.tasks.SourceSetContainer
@@ -11,6 +12,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
 import org.gradle.language.jvm.tasks.ProcessResources
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun DependencyHandlerScope.neoForge(version: String) {
     add("neoForge", version)
@@ -26,6 +28,8 @@ private val Project.sourceSets: SourceSetContainer get() {
 
 private val SourceSetContainer.main: NamedDomainObjectProvider<SourceSet> get() = named("main")
 
+private val SourceSet.kotlin: SourceDirectorySet get() = extensions.getByName("kotlin") as SourceDirectorySet
+
 fun Project.includeCodeFrom(otherPartialName: String) {
     val path = parent!!.childProjects.asSequence().first { it.key.contains(otherPartialName) }.value.path
 
@@ -39,6 +43,10 @@ fun Project.includeCodeFrom(otherPartialName: String) {
 
     tasks.withType<JavaCompile>().matching(excludeNeoSpec).configureEach {
         source(project(path).sourceSets.main.map { it.java })
+    }
+
+    tasks.withType<KotlinCompile>().matching(excludeNeoSpec).configureEach {
+        source(project(path).sourceSets.main.map { it.kotlin })
     }
 
     tasks.withType<ProcessResources>().matching(excludeNeoSpec).configureEach {

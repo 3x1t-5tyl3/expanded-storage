@@ -1,0 +1,31 @@
+modLoader = "kotlinforforge"
+loaderVersion = "[4.10,)"
+license = "PolyForm-Shield-1.0.0, https://polyformproject.org/licenses/shield/1.0.0/"
+issueTrackerURL = "https://github.com/quinn-semele/expanded-storage/issues/"
+
+[[mods]]
+modId = "stowage"
+version = "${mod_version}"
+displayName = "Stowage: Core"
+displayURL = "https://modrinth.com/mod/expanded-storage/"
+logoFile = "stowage.png"
+authors = "Quinn Semele"
+
+description = '''A storage mod focusing on user experience.'''
+
+[[dependencies.stowage]]
+modId = "neoforge"
+type = "required"
+versionRange = "[20.4,20.5)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.stowage]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.20.4,1.20.5)"
+ordering = "NONE"
+side = "BOTH"
+
+[features.stowage]
+javaVersion = "[21,)"

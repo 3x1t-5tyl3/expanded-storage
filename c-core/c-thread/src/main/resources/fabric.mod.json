@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "stowage",
+  "name": "Stowage: Core",
+  "version": "${mod_version}",
+  "environment": "*",
+  "authors": [ "Quinn Semele" ],
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "semele.quinn.stowage.thread.Main"
+      }
+    ]
+  }
+}

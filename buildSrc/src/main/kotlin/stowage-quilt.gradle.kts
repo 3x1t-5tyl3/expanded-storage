@@ -18,4 +18,5 @@ repositories {
 dependencies {
     modImplementation("org.quiltmc:quilt-loader:${Versions.QUILT_LOADER}")
     modImplementation("org.quiltmc.quilted-fabric-api:quilted-fabric-api:${Versions.QUILT_API}")
+    modImplementation("org.quiltmc.quilt-kotlin-libraries:quilt-kotlin-libraries:${Versions.QUILT_KOTLIN}")
 }
