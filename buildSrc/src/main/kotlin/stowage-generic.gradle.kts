@@ -53,8 +53,7 @@ tasks {
             "mod_version" to Versions.STOWAGE
         ))
 
-        // todo: 1.20.5, remove META-INF/mods.toml
-        filesMatching(listOf("fabric.mod.json", "quilt.mod.json", "META-INF/mods.toml", "META-INF/neoforge.mods.toml")) {
+        filesMatching(listOf("fabric.mod.json", "quilt.mod.json", "META-INF/neoforge.mods.toml")) {
             expand(inputs.properties)
         }
     }

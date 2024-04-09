@@ -17,6 +17,9 @@ repositories {
 
 dependencies {
     modImplementation("org.quiltmc:quilt-loader:${Versions.QUILT_LOADER}")
-    modImplementation("org.quiltmc.quilted-fabric-api:quilted-fabric-api:${Versions.QUILT_API}")
-    modImplementation("org.quiltmc.quilt-kotlin-libraries:quilt-kotlin-libraries:${Versions.QUILT_KOTLIN}")
+    // Temporary until Quilt catches up with Fabric.
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${Versions.FABRIC_API}")
+    modImplementation("net.fabricmc:fabric-language-kotlin:${Versions.FABRIC_KOTLIN}")
+//    modImplementation("org.quiltmc.quilted-fabric-api:quilted-fabric-api:${Versions.QUILT_API}")
+//    modImplementation("org.quiltmc.quilt-kotlin-libraries:quilt-kotlin-libraries:${Versions.QUILT_KOTLIN}")
 }
