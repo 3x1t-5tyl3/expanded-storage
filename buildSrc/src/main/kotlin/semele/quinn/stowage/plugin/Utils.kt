@@ -1,6 +1,5 @@
 package semele.quinn.stowage.plugin
 
-import gradle.kotlin.dsl.accessors._8c1aeecb91431fa2a1ba91c3bacfb2be.implementation
 import org.gradle.api.NamedDomainObjectProvider
 import org.gradle.api.Project
 import org.gradle.api.Task
@@ -22,6 +21,10 @@ fun DependencyHandlerScope.neoForge(version: String) {
 
 private fun DependencyHandlerScope.compileOnly(dependency: Any) {
     add("compileOnly", dependency)
+}
+
+private fun DependencyHandlerScope.implementation(dependency: Any) {
+    add("implementation", dependency)
 }
 
 private fun DependencyHandlerScope.include(dependency: Any) {
