@@ -1,5 +1,6 @@
 package semele.quinn.stowage.plugin
 
+import gradle.kotlin.dsl.accessors._8c1aeecb91431fa2a1ba91c3bacfb2be.implementation
 import org.gradle.api.NamedDomainObjectProvider
 import org.gradle.api.Project
 import org.gradle.api.Task
@@ -21,6 +22,10 @@ fun DependencyHandlerScope.neoForge(version: String) {
 
 private fun DependencyHandlerScope.compileOnly(dependency: Any) {
     add("compileOnly", dependency)
+}
+
+private fun DependencyHandlerScope.include(dependency: Any) {
+    add("include", dependency)
 }
 
 private val Project.sourceSets: SourceSetContainer get() {
@@ -61,10 +66,11 @@ fun Project.includeFromModule(otherPartialName: String) {
     val target = rootProject.childProjects.asSequence().first { it.key.contains(otherPartialName) }.value.childProjects.asSequence().first { it.key == name }.value
     evaluationDependsOn(target.path)
 
-    println("Module path: ${target.path}")
-
     dependencies {
-//        compileOnly(project(path = target.path, configuration = "namedElements"))
-//        include(target)
+        implementation(project(path = target.path, configuration = "namedElements"))
+
+        if (name != "a-common" && name != "c-thread") {
+            include(project(path = target.path, configuration = "namedElements"))
+        }
     }
 }

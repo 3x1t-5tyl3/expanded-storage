@@ -9,9 +9,9 @@ plugins {
     id("dev.architectury.loom")
 }
 
-group = "semele.quinn.stowage"
-version = "0.0.1"
-base.archivesName = Constants.MOD_ID
+group = "semele.quinn.stowage.${parent!!.name.substring(2)}"
+version = Versions.STOWAGE
+base.archivesName = Constants.MOD_ID + "-" + parent!!.name.substring(2) +  "-" + name.substring(2)
 
 loom {
     silentMojangMappingsLicense()

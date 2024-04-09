@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "stowage_barrels",
+  "name": "Stowage: Barrels",
+  "version": "${mod_version}",
+  "environment": "*",
+  "authors": [ "Quinn Semele" ],
+  "entrypoints": {
+    "main": [
+    ]
+  }
+}
