@@ -9,7 +9,7 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "semele.quinn.stowage.thread.Main"
+        "value": "semele.quinn.stowage.impl.Main"
       }
     ]
   }

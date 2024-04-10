@@ -6,7 +6,11 @@
   "environment": "*",
   "authors": [ "Quinn Semele" ],
   "entrypoints": {
-    "main": [
+    "stowage:plugin": [
+      {
+        "adapter": "kotlin",
+        "value": "semele.quinn.stowage_barrels.impl.Main"
+      }
     ]
   }
 }

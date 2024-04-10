@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/barrel",
+  "textures": {
+    "side": "stowage:block/copper_barrel_side"
+  }
+}

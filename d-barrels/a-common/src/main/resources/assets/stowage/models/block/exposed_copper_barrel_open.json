@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/barrel_open",
+  "textures": {
+    "side": "stowage:block/exposed_copper_barrel_side"
+  }
+}

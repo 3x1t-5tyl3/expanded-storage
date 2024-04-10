@@ -1,0 +1,21 @@
+modLoader = "javafml"
+loaderVersion = "[2,)"
+license = "PolyForm-Shield-1.0.0, https://polyformproject.org/licenses/shield/1.0.0/"
+issueTrackerURL = "https://github.com/quinn-semele/expanded-storage/issues/"
+
+[[mods]]
+modId = "stowage_barrels"
+version = "${mod_version}"
+displayName = "Stowage: Barrels"
+displayURL = "https://modrinth.com/mod/expanded-storage/"
+logoFile = "stowage.png"
+authors = "Quinn Semele"
+
+description = '''Adds barrels that store more.'''
+
+[modproperties.stowage_barrels]
+stowagePlugin = true
+
+[[dependencies.stowage_barrels]]
+modId = "stowage"
+type = "required"
