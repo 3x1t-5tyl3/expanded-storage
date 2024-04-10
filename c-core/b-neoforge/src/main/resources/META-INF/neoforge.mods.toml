@@ -13,6 +13,9 @@ authors = "Quinn Semele"
 
 description = '''A storage mod focusing on user experience.'''
 
+[modproperties.stowage]
+stowagePluginClass = "semele.quinn.stowage.impl.CoreStowagePlugin"
+
 [[dependencies.stowage]]
 modId = "neoforge"
 type = "required"

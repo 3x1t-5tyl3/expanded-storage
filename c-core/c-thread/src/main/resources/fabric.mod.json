@@ -11,6 +11,12 @@
         "adapter": "kotlin",
         "value": "semele.quinn.stowage.impl.Main"
       }
+    ],
+    "stowage:plugin": [
+      {
+        "adapter": "kotlin",
+        "value": "semele.quinn.stowage.impl.CoreStowagePlugin"
+      }
     ]
   }
 }

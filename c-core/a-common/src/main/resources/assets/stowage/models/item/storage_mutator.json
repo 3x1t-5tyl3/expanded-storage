@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "predicate": { "expandedstorage:tool_mode": 0.25 },
+      "model": "expandedstorage:item/storage_mutator_merge"
+    },
+    {
+      "predicate": { "expandedstorage:tool_mode": 0.5 },
+      "model": "expandedstorage:item/storage_mutator_split"
+    },
+    {
+      "predicate": { "expandedstorage:tool_mode": 0.75 },
+      "model": "expandedstorage:item/storage_mutator_rotate"
+    },
+    {
+      "predicate": { "expandedstorage:tool_mode": 1 },
+      "model": "expandedstorage:item/storage_mutator_swap_theme"
+    }
+  ]
+}

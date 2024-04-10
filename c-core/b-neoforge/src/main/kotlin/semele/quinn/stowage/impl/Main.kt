@@ -1,5 +1,6 @@
 package semele.quinn.stowage.impl
 
+import net.minecraft.client.renderer.item.ItemProperties
 import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
@@ -8,6 +9,7 @@ import net.neoforged.bus.api.IEventBus
 import net.neoforged.fml.ModContainer
 import net.neoforged.fml.ModList
 import net.neoforged.fml.common.Mod
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent
 import net.neoforged.neoforge.registries.RegisterEvent
 import java.util.*
@@ -24,7 +26,7 @@ class Main(val container: ModContainer, val bus: IEventBus) {
     }
 
     private fun findStowagePlugins(event: FMLConstructModEvent) {
-        val plugins = mutableMapOf<String, StowageLoadingPlugin>()
+        val plugins = mutableListOf<Pair<String, StowageLoadingPlugin>>()
 
         ModList.get().sortedMods.forEach {
             val modProperties = it.modInfo.modProperties
@@ -33,7 +35,7 @@ class Main(val container: ModContainer, val bus: IEventBus) {
                 val pluginClass = modProperties["stowagePluginClass"] as String
 
                 try {
-                    plugins[it.modId] = Class.forName(pluginClass).getConstructor().newInstance() as StowageLoadingPlugin
+                    plugins.add(Pair(it.modId, Class.forName(pluginClass).getConstructor().newInstance() as StowageLoadingPlugin))
                 } catch (e: Exception) {
                     Utils.LOGGER.error("Failed to find or load plugin class: $pluginClass")
                     throw e
@@ -41,7 +43,7 @@ class Main(val container: ModContainer, val bus: IEventBus) {
             }
         }
 
-        this.plugins = Collections.unmodifiableMap(plugins)
+        this.plugins = Collections.unmodifiableMap(plugins.sortedByDescending { it.second.priority() }.toMap())
     }
 
     private fun registerContent(event: RegisterEvent) {
@@ -54,7 +56,7 @@ class Main(val container: ModContainer, val bus: IEventBus) {
                 Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Utils.id("tab"), CreativeModeTab
                     .builder()
                     .icon {
-                        plugins.values.first().getCreativeTabIcon()
+                        plugins.values.first { !it.getCreativeTabIcon().isEmpty }.getCreativeTabIcon()
                     }
                     .displayItems { _, output ->
                         forEachPlugin {

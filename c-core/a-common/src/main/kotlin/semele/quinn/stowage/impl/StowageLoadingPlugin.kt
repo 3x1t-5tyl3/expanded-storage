@@ -9,13 +9,23 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 
 interface StowageLoadingPlugin {
-    fun registerBlocks(registry: RegistryHelper<Block> = RegistryHelper(BuiltInRegistries.BLOCK))
-    fun registerItems(registry: RegistryHelper<Item> = RegistryHelper(BuiltInRegistries.ITEM))
-    fun registerBlockEntities(registry: RegistryHelper<BlockEntityType<*>> = RegistryHelper(BuiltInRegistries.BLOCK_ENTITY_TYPE))
+    fun priority(): Int = 0
+
+    fun registerBlocks(registry: RegistryHelper<Block> = RegistryHelper(BuiltInRegistries.BLOCK)) {
+
+    }
+    fun registerItems(registry: RegistryHelper<Item> = RegistryHelper(BuiltInRegistries.ITEM)) {
+
+    }
+    fun registerBlockEntities(registry: RegistryHelper<BlockEntityType<*>> = RegistryHelper(BuiltInRegistries.BLOCK_ENTITY_TYPE)) {
+
+    }
     fun registerStats(helper: (ResourceLocation) -> ResourceLocation = {
         Registry.register(BuiltInRegistries.CUSTOM_STAT, it, it)
-    })
+    }) {
 
-    fun getCreativeTabIcon(): ItemStack
-    fun getCreativeTabStacks(): List<ItemStack>
+    }
+
+    fun getCreativeTabIcon(): ItemStack = ItemStack.EMPTY
+    fun getCreativeTabStacks(): List<ItemStack> = listOf()
 }

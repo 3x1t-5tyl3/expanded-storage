@@ -15,7 +15,7 @@ class Main : ModInitializer {
 
         plugins = FabricLoader.getInstance().getEntrypointContainers("stowage:plugin", StowageLoadingPlugin::class.java).map {
             return@map Pair(it.provider.metadata.id, it.entrypoint)
-        }.toMap()
+        }.sortedByDescending { it.second.priority() }.toMap()
 
         forEachPlugin {
             it.registerBlocks()
@@ -27,7 +27,7 @@ class Main : ModInitializer {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Utils.id("tab"), FabricItemGroup
             .builder()
             .icon {
-                plugins.values.first().getCreativeTabIcon()
+                plugins.values.first { !it.getCreativeTabIcon().isEmpty }.getCreativeTabIcon()
             }
             .displayItems { _, output ->
                 forEachPlugin {
