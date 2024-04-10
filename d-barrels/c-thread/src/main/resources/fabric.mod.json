@@ -9,7 +9,7 @@
     "stowage:plugin": [
       {
         "adapter": "kotlin",
-        "value": "semele.quinn.stowage_barrels.impl.Main"
+        "value": "semele.quinn.stowage_barrels.impl.BarrelsStowagePlugin"
       }
     ]
   }

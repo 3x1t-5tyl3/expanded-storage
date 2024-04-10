@@ -14,7 +14,7 @@ authors = "Quinn Semele"
 description = '''Adds barrels that store more.'''
 
 [modproperties.stowage_barrels]
-stowagePlugin = true
+stowagePluginClass = "semele.quinn.stowage_barrels.impl.BarrelsStowagePlugin"
 
 [[dependencies.stowage_barrels]]
 modId = "stowage"

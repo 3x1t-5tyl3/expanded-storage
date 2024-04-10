@@ -1,3 +1,9 @@
 package semele.quinn.stowage_barrels.impl
 
-class Main : BarrelsStowagePlugin()
+import net.fabricmc.api.ModInitializer
+
+class Main : ModInitializer {
+    override fun onInitialize() {
+
+    }
+}

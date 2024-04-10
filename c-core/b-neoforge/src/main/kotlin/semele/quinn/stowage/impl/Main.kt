@@ -25,8 +25,17 @@ class Main(val container: ModContainer, val bus: IEventBus) {
         val plugins = mutableMapOf<String, StowageLoadingPlugin>()
 
         ModList.get().sortedMods.forEach {
-            if (it is FMLModContainer && it.modInfo.modProperties.containsKey("stowagePlugin")) {
-                plugins[it.modId] = it.mod as StowageLoadingPlugin
+            val modProperties = it.modInfo.modProperties
+
+            if ("stowagePluginClass" in modProperties) {
+                val pluginClass = modProperties["stowagePluginClass"] as String
+
+                try {
+                    plugins[it.modId] = Class.forName(pluginClass).getConstructor().newInstance() as StowageLoadingPlugin
+                } catch (e: Exception) {
+                    Utils.LOGGER.error("Failed to find or load plugin class: $pluginClass")
+                    throw e
+                }
             }
         }
 
