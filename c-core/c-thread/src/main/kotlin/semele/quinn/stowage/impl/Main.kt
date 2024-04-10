@@ -1,7 +1,11 @@
 package semele.quinn.stowage.impl
 
 import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.fabricmc.loader.api.FabricLoader
+import net.minecraft.core.Registry
+import net.minecraft.core.registries.BuiltInRegistries
+import net.minecraft.network.chat.Component
 
 class Main : ModInitializer {
     private lateinit var plugins: Map<String, StowageLoadingPlugin>
@@ -19,6 +23,19 @@ class Main : ModInitializer {
             it.registerItems()
             it.registerStats()
         }
+
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Utils.id("tab"), FabricItemGroup
+            .builder()
+            .icon {
+                plugins.values.first().getCreativeTabIcon()
+            }
+            .displayItems { _, output ->
+                forEachPlugin {
+                    it.getCreativeTabStacks().forEach(output::accept)
+                }
+            }
+            .title(Component.translatable("itemGroup.stowage.tab"))
+            .build())
     }
 
     private fun forEachPlugin(function: (StowageLoadingPlugin) -> Unit) {

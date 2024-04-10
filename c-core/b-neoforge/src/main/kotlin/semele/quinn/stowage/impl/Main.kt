@@ -1,12 +1,14 @@
 package semele.quinn.stowage.impl
 
+import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
+import net.minecraft.network.chat.Component
+import net.minecraft.world.item.CreativeModeTab
 import net.neoforged.bus.api.IEventBus
 import net.neoforged.fml.ModContainer
 import net.neoforged.fml.ModList
 import net.neoforged.fml.common.Mod
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent
-import net.neoforged.fml.javafmlmod.FMLModContainer
 import net.neoforged.neoforge.registries.RegisterEvent
 import java.util.*
 
@@ -48,6 +50,21 @@ class Main(val container: ModContainer, val bus: IEventBus) {
             BuiltInRegistries.BLOCK -> forEachPlugin { it.registerBlocks() }
             BuiltInRegistries.ITEM -> forEachPlugin { it.registerItems() }
             BuiltInRegistries.BLOCK_ENTITY_TYPE -> forEachPlugin { it.registerBlockEntities() }
+            BuiltInRegistries.CREATIVE_MODE_TAB -> {
+                Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Utils.id("tab"), CreativeModeTab
+                    .builder()
+                    .icon {
+                        plugins.values.first().getCreativeTabIcon()
+                    }
+                    .displayItems { _, output ->
+                        forEachPlugin {
+                            it.getCreativeTabStacks().forEach(output::accept)
+                        }
+                    }
+                    .title(Component.translatable("itemGroup.stowage.tab"))
+                    .build()
+                )
+            }
         }
     }
 

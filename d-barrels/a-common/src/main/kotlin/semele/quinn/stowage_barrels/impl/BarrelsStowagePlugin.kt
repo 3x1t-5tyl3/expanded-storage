@@ -3,6 +3,7 @@ package semele.quinn.stowage_barrels.impl
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.SoundType
@@ -34,7 +35,7 @@ open class BarrelsStowagePlugin : StowageLoadingPlugin {
     private lateinit var waxedOxidizedCopperBarrel: Block
 
     private lateinit var ironBarrel: Block
-    private lateinit var goldBarrel: Block
+    private lateinit var goldenBarrel: Block
     private lateinit var diamondBarrel: Block
     private lateinit var obsidianBarrel: Block
     private lateinit var netheriteBarrel: Block
@@ -58,7 +59,7 @@ open class BarrelsStowagePlugin : StowageLoadingPlugin {
         waxedOxidizedCopperBarrel = registry.register("waxed_oxidized_copper_barrel", BarrelBlock(softMetalProperties))
 
         ironBarrel = registry.register("iron_barrel", BarrelBlock(strongMetalProperties))
-        goldBarrel = registry.register("golden_barrel", BarrelBlock(softMetalProperties))
+        goldenBarrel = registry.register("golden_barrel", BarrelBlock(softMetalProperties))
         diamondBarrel = registry.register("diamond_barrel", BarrelBlock(strongMetalProperties))
         obsidianBarrel = registry.register("obsidian_barrel", BarrelBlock(obsidianProperties))
         netheriteBarrel = registry.register("netherite_barrel", BarrelBlock(netheriteProperties))
@@ -78,7 +79,7 @@ open class BarrelsStowagePlugin : StowageLoadingPlugin {
         registry.register(waxedOxidizedCopperBarrel, BlockItem(waxedOxidizedCopperBarrel, ItemProperties()))
 
         registry.register(ironBarrel, BlockItem(ironBarrel, ItemProperties()))
-        registry.register(goldBarrel, BlockItem(goldBarrel, ItemProperties()))
+        registry.register(goldenBarrel, BlockItem(goldenBarrel, ItemProperties()))
         registry.register(diamondBarrel, BlockItem(diamondBarrel, ItemProperties()))
         registry.register(obsidianBarrel, BlockItem(obsidianBarrel, ItemProperties()))
         registry.register(netheriteBarrel, BlockItem(netheriteBarrel, ItemProperties().fireResistant()))
@@ -89,7 +90,7 @@ open class BarrelsStowagePlugin : StowageLoadingPlugin {
             woodenBarrel,
             copperBarrel, exposedCopperBarrel, weatheredCopperBarrel, oxidizedCopperBarrel,
             waxedCopperBarrel, waxedExposedCopperBarrel, waxedWeatheredCopperBarrel, waxedOxidizedCopperBarrel,
-            ironBarrel, goldBarrel, diamondBarrel, obsidianBarrel, netheriteBarrel
+            ironBarrel, goldenBarrel, diamondBarrel, obsidianBarrel, netheriteBarrel
         ).build(null))
     }
 
@@ -101,6 +102,30 @@ open class BarrelsStowagePlugin : StowageLoadingPlugin {
         helper.invoke(Utils.id("open_diamond_barrel"))
         helper.invoke(Utils.id("open_obsidian_barrel"))
         helper.invoke(Utils.id("open_netherite_barrel"))
+    }
+
+    override fun getCreativeTabIcon(): ItemStack = diamondBarrel.asItem().defaultInstance
+
+    override fun getCreativeTabStacks(): List<ItemStack> {
+        return listOf(
+            woodenBarrel.asItem().defaultInstance,
+
+            copperBarrel.asItem().defaultInstance,
+            exposedCopperBarrel.asItem().defaultInstance,
+            weatheredCopperBarrel.asItem().defaultInstance,
+            oxidizedCopperBarrel.asItem().defaultInstance,
+
+            waxedCopperBarrel.asItem().defaultInstance,
+            waxedExposedCopperBarrel.asItem().defaultInstance,
+            waxedWeatheredCopperBarrel.asItem().defaultInstance,
+            waxedOxidizedCopperBarrel.asItem().defaultInstance,
+
+            ironBarrel.asItem().defaultInstance,
+            goldenBarrel.asItem().defaultInstance,
+            diamondBarrel.asItem().defaultInstance,
+            obsidianBarrel.asItem().defaultInstance,
+            netheriteBarrel.asItem().defaultInstance
+        )
     }
 
     private fun BlockProperties.barrel(): BlockProperties {

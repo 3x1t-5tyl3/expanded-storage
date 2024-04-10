@@ -4,6 +4,7 @@ import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 
@@ -14,4 +15,7 @@ interface StowageLoadingPlugin {
     fun registerStats(helper: (ResourceLocation) -> ResourceLocation = {
         Registry.register(BuiltInRegistries.CUSTOM_STAT, it, it)
     })
+
+    fun getCreativeTabIcon(): ItemStack
+    fun getCreativeTabStacks(): List<ItemStack>
 }
