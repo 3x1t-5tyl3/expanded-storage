@@ -1,6 +1,5 @@
 package semele.quinn.stowage.impl
 
-import net.minecraft.client.renderer.item.ItemProperties
 import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
@@ -9,9 +8,9 @@ import net.neoforged.bus.api.IEventBus
 import net.neoforged.fml.ModContainer
 import net.neoforged.fml.ModList
 import net.neoforged.fml.common.Mod
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent
 import net.neoforged.neoforge.registries.RegisterEvent
+import semele.quinn.stowage.impl.plugin.StowageLoadingPlugin
 import java.util.*
 
 @Mod(Utils.MOD_ID)

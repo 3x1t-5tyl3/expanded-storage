@@ -1,4 +1,4 @@
-package semele.quinn.stowage.impl
+package semele.quinn.stowage.impl.plugin
 
 import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries

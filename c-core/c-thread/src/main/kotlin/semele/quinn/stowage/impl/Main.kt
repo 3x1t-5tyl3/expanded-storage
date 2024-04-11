@@ -6,6 +6,7 @@ import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.core.Registry
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
+import semele.quinn.stowage.impl.plugin.StowageLoadingPlugin
 
 class Main : ModInitializer {
     private lateinit var plugins: Map<String, StowageLoadingPlugin>

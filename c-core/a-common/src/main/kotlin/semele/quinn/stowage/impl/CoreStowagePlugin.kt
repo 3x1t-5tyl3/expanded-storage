@@ -3,6 +3,8 @@ package semele.quinn.stowage.impl
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import semele.quinn.stowage.impl.item.StorageMutator
+import semele.quinn.stowage.impl.plugin.RegistryHelper
+import semele.quinn.stowage.impl.plugin.StowageLoadingPlugin
 
 import net.minecraft.world.item.Item.Properties as ItemProperties
 

@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.WeatheringCopper.WeatherState
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument
 import net.minecraft.world.level.material.MapColor
-import semele.quinn.stowage.impl.RegistryHelper
-import semele.quinn.stowage.impl.StowageLoadingPlugin
+import semele.quinn.stowage.impl.plugin.RegistryHelper
+import semele.quinn.stowage.impl.plugin.StowageLoadingPlugin
 import semele.quinn.stowage.impl.Utils
 import semele.quinn.stowage.impl.Utils.flammable
 import semele.quinn.stowage_barrels.impl.block.BarrelBlock
@@ -66,23 +66,23 @@ open class BarrelsStowagePlugin : StowageLoadingPlugin {
     }
 
     override fun registerItems(registry: RegistryHelper<Item>) {
-        registry.register(woodenBarrel, BlockItem(woodenBarrel, ItemProperties()))
+        registry.register(BlockItem(woodenBarrel, ItemProperties()))
 
-        registry.register(copperBarrel, BlockItem(copperBarrel, ItemProperties()))
-        registry.register(exposedCopperBarrel, BlockItem(exposedCopperBarrel, ItemProperties()))
-        registry.register(weatheredCopperBarrel, BlockItem(weatheredCopperBarrel, ItemProperties()))
-        registry.register(oxidizedCopperBarrel, BlockItem(oxidizedCopperBarrel, ItemProperties()))
+        registry.register(BlockItem(copperBarrel, ItemProperties()))
+        registry.register(BlockItem(exposedCopperBarrel, ItemProperties()))
+        registry.register(BlockItem(weatheredCopperBarrel, ItemProperties()))
+        registry.register(BlockItem(oxidizedCopperBarrel, ItemProperties()))
 
-        registry.register(waxedCopperBarrel, BlockItem(waxedCopperBarrel, ItemProperties()))
-        registry.register(waxedExposedCopperBarrel, BlockItem(waxedExposedCopperBarrel, ItemProperties()))
-        registry.register(waxedWeatheredCopperBarrel, BlockItem(waxedWeatheredCopperBarrel, ItemProperties()))
-        registry.register(waxedOxidizedCopperBarrel, BlockItem(waxedOxidizedCopperBarrel, ItemProperties()))
+        registry.register(BlockItem(waxedCopperBarrel, ItemProperties()))
+        registry.register(BlockItem(waxedExposedCopperBarrel, ItemProperties()))
+        registry.register(BlockItem(waxedWeatheredCopperBarrel, ItemProperties()))
+        registry.register(BlockItem(waxedOxidizedCopperBarrel, ItemProperties()))
 
-        registry.register(ironBarrel, BlockItem(ironBarrel, ItemProperties()))
-        registry.register(goldenBarrel, BlockItem(goldenBarrel, ItemProperties()))
-        registry.register(diamondBarrel, BlockItem(diamondBarrel, ItemProperties()))
-        registry.register(obsidianBarrel, BlockItem(obsidianBarrel, ItemProperties()))
-        registry.register(netheriteBarrel, BlockItem(netheriteBarrel, ItemProperties().fireResistant()))
+        registry.register(BlockItem(ironBarrel, ItemProperties()))
+        registry.register(BlockItem(goldenBarrel, ItemProperties()))
+        registry.register(BlockItem(diamondBarrel, ItemProperties()))
+        registry.register(BlockItem(obsidianBarrel, ItemProperties()))
+        registry.register(BlockItem(netheriteBarrel, ItemProperties().fireResistant()))
     }
 
     override fun registerBlockEntities(registry: RegistryHelper<BlockEntityType<*>>) {
