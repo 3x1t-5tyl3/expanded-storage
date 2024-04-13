@@ -1,5 +1,7 @@
+import semele.quinn.stowage.plugin.Constants
 import semele.quinn.stowage.plugin.Versions
 import semele.quinn.stowage.plugin.includeFromCommon
+import semele.quinn.stowage.plugin.subprojectFromPartial
 import semele.quinn.stowage.plugin.neoForge
 
 plugins {
@@ -7,6 +9,33 @@ plugins {
 }
 
 includeFromCommon("common")
+
+loom {
+    runs {
+        create("datagen") {
+            data()
+
+            programArg("--existing")
+            programArg(file("src/main/resources").absolutePath)
+
+            programArg("--existing")
+            programArg(subprojectFromPartial("common").file("src/main/resources").absolutePath)
+
+
+            programArg("--all")
+
+            programArg("--mod")
+            programArg(Constants.MOD_ID)
+
+            programArg("--output")
+            programArg(file("src/generated/resources").absolutePath)
+        }
+    }
+}
+
+sourceSets.main {
+    resources.srcDir(file("src/generated/resources"))
+}
 
 repositories {
     maven {

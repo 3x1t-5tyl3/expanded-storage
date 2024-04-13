@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "expandedstorage:item/storage_mutator_rotate"
+    "layer0": "stowage:item/mutator_split"
   }
 }

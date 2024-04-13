@@ -16,6 +16,9 @@ description = '''A storage mod focusing on user experience.'''
 [modproperties.stowage]
 stowagePluginClass = "semele.quinn.stowage.impl.CoreStowagePlugin"
 
+[[mixins]]
+config = "stowage-core.mixins.json"
+
 [[dependencies.stowage]]
 modId = "neoforge"
 type = "required"

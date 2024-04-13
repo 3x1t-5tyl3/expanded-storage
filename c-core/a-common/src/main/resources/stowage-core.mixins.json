@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "semele.quinn.stowage.impl.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+
+  ],
+  "client": [
+    "client.StowageItemProperties"
+  ],
+  "injectors": { "defaultRequire": 1 },
+  "minVersion": "0.8"
+}

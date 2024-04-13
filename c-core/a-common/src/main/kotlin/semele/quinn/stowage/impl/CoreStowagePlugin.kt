@@ -1,10 +1,14 @@
 package semele.quinn.stowage.impl
 
+import net.minecraft.core.component.DataComponentType
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
+import semele.quinn.stowage.impl.item.MutatorData
+import semele.quinn.stowage.impl.item.MutatorMode
 import semele.quinn.stowage.impl.item.StorageMutator
 import semele.quinn.stowage.impl.plugin.RegistryHelper
 import semele.quinn.stowage.impl.plugin.StowageLoadingPlugin
+import java.util.Optional
 
 import net.minecraft.world.item.Item.Properties as ItemProperties
 
@@ -14,7 +18,16 @@ class CoreStowagePlugin : StowageLoadingPlugin {
     override fun priority(): Int = 10
 
     override fun registerItems(registry: RegistryHelper<Item>) {
-        storageMutator = registry.register(Utils.id("storage_mutator"), StorageMutator(ItemProperties()))
+        storageMutator = registry.register(Utils.id("mutator"),
+            StorageMutator(ItemProperties()
+                .component(MutatorData.COMPONENT, MutatorData(MutatorMode.MERGE, Optional.empty()))
+                .stacksTo(1)
+            )
+        )
+    }
+
+    override fun registerDataComponents(registry: RegistryHelper<DataComponentType<*>>) {
+        registry.register(Utils.id("mutator_data"), MutatorData.COMPONENT)
     }
 
     override fun getCreativeTabIcon(): ItemStack = ItemStack.EMPTY

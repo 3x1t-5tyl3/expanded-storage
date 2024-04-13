@@ -1,4 +1,23 @@
 {
-  "itemGroup.stowage.tab": "Stowage",
-  "item.stowage.storage_mutator": "Storage Mutator"
+  "stowage.tab": "Stowage",
+
+  "stowage.item.alt_use": "%1$s + %2$s",
+  "stowage.item.use": "Right Click",
+
+  "item.stowage.mutator": "Stowage Mutator",
+  "stowage.item.mutator.mode": "Mode: %s",
+  "stowage.item.mutator.change_mode": "%s in air to change modes.",
+
+  "stowage.item.mutator.merge": "Merge",
+  "stowage.item.mutator.description_merge": "%s on a block to merge it with an adjacent one.",
+
+  "stowage.item.mutator.rotate": "Rotate",
+  "stowage.item.mutator.description_rotate": "%s on a block to turn it clockwise.",
+  "stowage.item.mutator.description_rotate_alt": "%s on a block to turn it counterclockwise.",
+
+  "stowage.item.mutator.split": "Split",
+  "stowage.item.mutator.description_split": "%s on a double block to split it into two.",
+
+  "stowage.item.mutator.tailor": "Tailor",
+  "stowage.item.mutator.description_tailor": "%s on a block to change its style."
 }

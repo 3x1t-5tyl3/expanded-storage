@@ -1,6 +1,7 @@
 package semele.quinn.stowage.impl.plugin
 
 import net.minecraft.core.Registry
+import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.level.block.Block
@@ -21,7 +22,13 @@ class RegistryHelper<T>(private val registry: Registry<T>) {
     fun register(value: T & Any): T {
         return when(value) {
             is BlockItem -> register(value.block, value)
-            else -> throw IllegalArgumentException("value must be one of [BlockItem]")
+            is ResourceLocation -> register(value, value)
+            else -> throw IllegalArgumentException("value must be one of [BlockItem, ResourceLocation]")
         }
     }
+
+    fun key(): ResourceKey<out Registry<T>> = registry.key()
+
+    @Suppress("UNCHECKED_CAST")
+    fun <O> cast(): RegistryHelper<O> = this as RegistryHelper<O>
 }

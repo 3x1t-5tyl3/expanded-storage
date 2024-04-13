@@ -94,14 +94,14 @@ open class BarrelsStowagePlugin : StowageLoadingPlugin {
         ).build(null))
     }
 
-    override fun registerStats(helper: (ResourceLocation) -> ResourceLocation) {
-        helper.invoke(Utils.id("open_wood_barrel"))
-        helper.invoke(Utils.id("open_copper_barrel"))
-        helper.invoke(Utils.id("open_iron_barrel"))
-        helper.invoke(Utils.id("open_gold_barrel"))
-        helper.invoke(Utils.id("open_diamond_barrel"))
-        helper.invoke(Utils.id("open_obsidian_barrel"))
-        helper.invoke(Utils.id("open_netherite_barrel"))
+    override fun registerStats(registry: RegistryHelper<ResourceLocation>) {
+        registry.register(Utils.id("open_wood_barrel"))
+        registry.register(Utils.id("open_copper_barrel"))
+        registry.register(Utils.id("open_iron_barrel"))
+        registry.register(Utils.id("open_gold_barrel"))
+        registry.register(Utils.id("open_diamond_barrel"))
+        registry.register(Utils.id("open_obsidian_barrel"))
+        registry.register(Utils.id("open_netherite_barrel"))
     }
 
     override fun getCreativeTabIcon(): ItemStack = diamondBarrel.asItem().defaultInstance

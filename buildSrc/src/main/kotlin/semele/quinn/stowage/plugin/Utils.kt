@@ -39,8 +39,12 @@ private val SourceSetContainer.main: NamedDomainObjectProvider<SourceSet> get() 
 
 private val SourceSet.kotlin: SourceDirectorySet get() = extensions.getByName("kotlin") as SourceDirectorySet
 
+fun Project.subprojectFromPartial(otherPartialName: String): Project {
+   return parent!!.childProjects.asSequence().first { it.key.contains(otherPartialName) }.value
+}
+
 fun Project.includeFromCommon(otherPartialName: String) {
-    val path = parent!!.childProjects.asSequence().first { it.key.contains(otherPartialName) }.value.path
+    val path = subprojectFromPartial(otherPartialName).path
 
     evaluationDependsOn(path)
 

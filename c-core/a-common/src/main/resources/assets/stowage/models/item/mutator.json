@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "predicate": { "stowage:mutator_mode": 0.25 },
+      "model": "stowage:item/mutator_merge"
+    },
+    {
+      "predicate": { "stowage:mutator_mode": 0.5 },
+      "model": "stowage:item/mutator_split"
+    },
+    {
+      "predicate": { "stowage:mutator_mode": 0.75 },
+      "model": "stowage:item/mutator_rotate"
+    },
+    {
+      "predicate": { "stowage:mutator_mode": 1 },
+      "model": "stowage:item/mutator_tailor"
+    }
+  ]
+}

@@ -18,5 +18,10 @@
         "value": "semele.quinn.stowage.impl.CoreStowagePlugin"
       }
     ]
-  }
+  },
+  "mixins": [
+    {
+      "config": "stowage-core.mixins.json"
+    }
+  ]
 }
